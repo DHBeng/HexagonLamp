@@ -1,0 +1,13 @@
+client.println("<!DOCTYPE html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width\">");
+client.println("<head><title>HMI Lamp Office</title><style>body {color: honeydew;background-color: rgb(20, 20, 20);font-family: Verdana;font-size: 25px;}");
+client.println("button {max-width: 100%;min-width: 20%;width: 100%;font-family: monospace;font-size: 25px;font-weight: bolder;}");
+client.println("input[type='range'] {max-width: 100%;min-width: 20%;width: 100%;font-family: monospace;font-size: 25px;cursor: ew-resize;}");
+client.println("</style></head><body><h1 style=\"text-align: center;\">⬡ Lamp</h1><p><form><button type=\"submit\" name=\"P\" value=\"1\">");
+client.println("Power</button></form></p><form><p><label for=\"mode\">Select Mode</label><select id=\"mode\" style=\"width: 100%; font-size: 25px; font-weight: bolder;\" name=\"M\">");
+client.println("<option selected=\"selected\" value=\"1\">Rainbow Fade</option><option value=\"2\">");
+client.println("Monochrom Fade</option><option value=\"3\">Singel Color</option><option value=\"4\">");
+client.println("Warm White</option><option value=\"5\">Random Color Fade</option></select></p><h2>");
+client.println("Settings</h2><label for=\"brightness\">Brightness</label><input type=\"range\" id=\"brightness\" name=\"B\" min=\"0\" max=\"255\"/>");
+client.println("<label for=\"speed\">Speed</label><input type=\"range\" id=\"speed\" name=\"S\" min=\"10\" max=\"50\">");
+client.println("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" style=\"width: 100%;\" name=\"C\" />");
+client.println("<button type=\"submit\">Apply</button></form></body></html>");
