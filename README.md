@@ -1,7 +1,7 @@
 # HexLamp
 This GIT repository contains the software for controlling led lamp.
 The lamp is using WS2812b neopixels.
-You can find the lamp this software was designed for on [Thinkiverse](https://www.thingiverse.com/thing:4759920 "HexLamp").
+You can find the lamp this software was designed for on [Thingiverse](https://www.thingiverse.com/thing:4759920 "HexLamp").
 
 ## Content
 1. [Functionality](##functionality "Functionality")
