@@ -45,5 +45,6 @@ class WebVisu
     uint8_t brightness;
     uint8_t speed;
     rgbColor color;
+    uint32_t colorHex;
 };
 #endif
