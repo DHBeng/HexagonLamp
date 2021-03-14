@@ -46,12 +46,12 @@ case 5:
 }
 client.print("</p><h2>Settings</h2><label for=\"brightness\">Brightness</label><input type=\"range\" id=\"brightness\" name=\"B\" min=\"0\" max=\"255\" value=\"");
 client.print(WebVisu::brightness);
-client.println("\"/>");
+client.println("\" />");
 client.print("<label for=\"speed\">Speed</label><input type=\"range\" id=\"speed\" name=\"S\" min=\"10\" max=\"50\" value=\"");
 client.print(WebVisu::speed);
-client.println("\"/>");
+client.println("\" />");
 client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" style=\"width: 100%;\" name=\"C\" value=\"#");
 client.print(WebVisu::colorHex, HEX);
-client.println("\"/>");
-client.println("<button type=\"submit\">Apply</button></form></body><hr><footer>Created by D_Herbert.Visit <a href=\"https://www.thingiverse.com/thing:4759920\">");
+client.println("\" />");
+client.println("<button type=\"submit\">Apply</button></form></body><hr><footer>Created by D_Herbert. Visit <a href=\"https://www.thingiverse.com/thing:4759920\">");
 client.println("Thingiverse</a> for more information.</footer></html>");
