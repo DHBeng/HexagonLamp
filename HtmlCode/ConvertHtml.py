@@ -4,10 +4,51 @@ def insertValue(destination, line: str, value: str, hexValue: bool):
     
     valueStartPos = line.find("\"temp")
     if (hexValue):
-        temp = "client.print(\"" + line[0:valueStartPos+1] +"#\");\n"
+        temp = "switch (WebVisu::colorHex)\n"
+        destination.write(temp)
+        temp = "{\n"
+        destination.write(temp)
+        temp = "case 0x0 ... 0xF:\n"
+        destination.write(temp)
+        temp = "\tclient.print(\"" + line[0:valueStartPos+1] +"#00000\");\n"
+        destination.write(temp)
+        temp = "\tbreak;\n"
+        destination.write(temp)
+        temp = "case 0x1F ... 0xFF:\n"
+        destination.write(temp)
+        temp = "\tclient.print(\"" + line[0:valueStartPos+1] +"#0000\");\n"
+        destination.write(temp)
+        temp = "\tbreak;\n"
+        destination.write(temp)
+        temp = "case 0x1FF ... 0xFFF:\n"
+        destination.write(temp)
+        temp = "\tclient.print(\"" + line[0:valueStartPos+1] +"#000\");\n"
+        destination.write(temp)
+        temp = "\tbreak;\n"
+        destination.write(temp)
+        temp = "case 0x1FFF ... 0xFFFF:\n"
+        destination.write(temp)
+        temp = "\tclient.print(\"" + line[0:valueStartPos+1] +"#00\");\n"
+        destination.write(temp)
+        temp = "\tbreak;\n"
+        destination.write(temp)
+        temp = "case 0x1FFFF ... 0xFFFFF:\n"
+        destination.write(temp)
+        temp = "\tclient.print(\"" + line[0:valueStartPos+1] +"#0\");\n"
+        destination.write(temp)
+        temp = "\tbreak;\n"
+        destination.write(temp)
+        temp = "case 0x1FFFFF ... 0xFFFFFF:\n"
+        destination.write(temp)
+        temp = "\tclient.print(\"" + line[0:valueStartPos+1] +"#\");\n"
+        destination.write(temp)
+        temp = "\tbreak;\n"
+        destination.write(temp)
+        temp = "}\n"
+        destination.write(temp)
     else:
         temp = "client.print(\"" + line[0:valueStartPos+1] +"\");\n"
-    destination.write(temp)
+        destination.write(temp)
     temp = "client.print(" + value + ");\n"
     destination.write(temp)
     temp = "client.println(\"" + line[valueStartPos+5:] + "\");\n"
