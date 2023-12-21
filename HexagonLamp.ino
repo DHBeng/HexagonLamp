@@ -2,21 +2,32 @@
 #include "Adafruit_NeoPixel.h"
 #include "WebVisu.h"
 #include "config.h"
+#include "ArduinoBLE.h"
 
 #define NUMPIXELS 87
 #define PIN 3
 
+// WebVisu object
 WebVisu userInterface;
+// Neopixel object
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
+// define strucxture for LED position
 struct ledPosition
 {
   uint16_t index;
-
   uint16_t posX;
   uint16_t posY;
 };
 
+/* GLOBAL CONSTANTS */
+// Modes
+const uint8_t RAINBOW_FADE = 1;
+const uint8_t MONOCHROME_FADE = 2;
+const uint8_t SINGLE_COLOR = 3;
+const uint8_t WARM_WHITE = 4;
+const uint8_t RANDOM_COLOR = 5;
+// define array of LED descript by there position
 const ledPosition LAMP_DEF[NUMPIXELS] PROGMEM = {
     {0, 140, 311},
     {1, 106, 311},
@@ -105,28 +116,41 @@ const ledPosition LAMP_DEF[NUMPIXELS] PROGMEM = {
     {84, 859, 311},
     {85, 825, 311},
     {86, 792, 311}};
+
+/* GLOBAL VARIABLS*/
+// Maximal value for the x coordinate
 static uint16_t xMax;
+// power status
 static bool powered;
+// current lamp settings
 static lampSettings settings;
+// step size for fade mode
 static uint8_t stepSize;
+// delay time for animation call
 static uint8_t delayTime;
+// start time
 static uint32_t startTime;
 
+/* SETUP */
 void setup()
 {
+  delay(5000);
+  // Configure PWM frequency
+  analogWriteResolution(12);
+
   uint8_t i;
   ledPosition led;
-  bool connect;
+  bool wifiConnected;
 
   // init pixels
   pixels.begin();
   pixels.clear();
+  // Get maximum x coordinate
   for (i = 0; i < NUMPIXELS; i++)
   {
     led = GetLedPosition(i);
     xMax = max(xMax, led.posX);
   }
-
   // connect to wifi
   i = 0;
   pixels.setPixelColor(i, 0, 0, 255);
@@ -134,11 +158,14 @@ void setup()
   pixels.show();
   do
   {
-    connect = userInterface.connectToWiFi(SECRET_SSID, SECRET_PASS, IP, 1000000);
+    // call conection methode
+    wifiConnected = userInterface.connectToWiFi(SECRET_SSID, SECRET_PASS, IP, 1000000);
+    // One LED is blue will connecting
     pixels.setPixelColor(i, 0, 0, 255);
+
     i++;
     pixels.show();
-  } while (not connect);
+  } while (wifiConnected == false);
   // connection successful
   pixels.clear();
   pixels.setPixelColor(0, 0, 255, 0);
@@ -163,7 +190,20 @@ void loop()
     stepSize = settings.speed;
     delayTime = 50 - (settings.speed - 10);
   }
-  
+
+  // detect mode change
+  bool modeChanged;
+  static uint8_t modeOld;
+  if (settings.mode != modeOld)
+  {
+    modeChanged = true;
+    modeOld = settings.mode;
+  }
+  else
+  {
+    modeChanged = false;
+  }
+
   // delay for animation
   uint32_t currentTime = millis();
   uint32_t lastUpdate = currentTime - startTime;
@@ -180,32 +220,32 @@ void loop()
 
   // lamp modes
   if (powered)
-  { 
+  {
     switch (settings.mode)
     {
-    case 1: // rainbow fade
+    case RAINBOW_FADE:
       RainbowFade(stepSize);
       break;
-    case 2: // monochrome fade
-      if (callAnimation) 
+    case MONOCHROME_FADE:
+      if (callAnimation)
       {
         MonochromeFade();
       }
       break;
-    case 3: // singel color
-      if (callAnimation) 
+    case SINGLE_COLOR:
+      if (callAnimation)
       {
         SingelColor(settings.color);
       }
       break;
-    case 4: // warm white
-      if (callAnimation) 
+    case WARM_WHITE:
+      if (callAnimation)
       {
         WarmWhite();
       }
       break;
-    case 5: // random color
-      if (callAnimation) 
+    case RANDOM_COLOR:
+      if (callAnimation)
       {
         RandomColor();
       }
@@ -216,7 +256,7 @@ void loop()
   {
     pixels.clear();
   }
-  
+
   pixels.setBrightness(settings.brightness);
   pixels.show();
 }
@@ -414,4 +454,13 @@ ledPosition GetLedPosition(int i)
   led.posX = pgm_read_word(&LAMP_DEF[i].posX);
   led.posY = pgm_read_word(&LAMP_DEF[i].posY);
   return led;
+}
+
+rgbColor getRgbColor(uint32_t color)
+{
+  rgbColor resultColor;
+  resultColor.blue = (color) & 0xFF;
+  resultColor.green = (color >> 8) & 0xFF;
+  resultColor.red = (color >> 16) & 0xFF;
+  return resultColor;
 }
