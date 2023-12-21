@@ -1,5 +1,4 @@
 #include <Arduino.h>
-
 #include "WebVisu.h"
 
 WebVisu::WebVisu(){};
@@ -99,13 +98,17 @@ bool WebVisu::handleClientRequest()
                     client.println();
                     // ---AUTO GENERATED CODE - START ---
                     client.println("<!DOCTYPE html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width\">");
-                    client.println("<head><title>HMI Lamp Office</title><style>body {color: honeydew;background-color: rgb(20, 20, 20);font-family: Verdana;font-size: 25px;}");
-                    client.println("button {max-width: 100%;min-width: 20%;width: 100%;font-family: monospace;font-size: 25px;font-weight: bolder;}");
-                    client.println("input[type='range'] {max-width: 100%;min-width: 20%;width: 100%;font-family: monospace;font-size: 25px;cursor: ew-resize;}");
-                    client.println("footer {font-size: 10px;}</style></head><body><h1 style=\"text-align: center;\">");
-                    client.println("⬡ Lamp</h1><p><form><button type=\"submit\" name=\"P\">Power</button></form></p>");
-                    client.println("<form><p><label for=\"mode\">Select Mode</label>");
-                    client.println("<select id=\"mode\" style=\"width: 100%; font-size: 25px; font-weight: bolder;\" name=\"M\">");
+                    client.println("<head><title>LampOffice</title><style>body {background-color: #333;color: #fff;font-family: 'Arial', sans-serif;justify-content: center;margin: 0.5%;padding: 0.5%;}");
+                    client.println("h1 {font-size: 28px;margin-bottom: 10px;color: #ff6f61;text-align: center;}h2 {font-size: 20px;margin-bottom: 10px;color: #ffa05c;text-align: center;}");
+                    client.println("label {font-size: 16px;margin-bottom: 0px;margin-top: 6px;display: block;text-align: left;color: #fff;}");
+                    client.println("select,input[type='range'],input[type='color'],button {width: calc(100% - 20px);height: 35px;padding: 3px;margin: 6px 0;font-size: 14px;border-radius: 5px;border: 1px solid #ccc;box-sizing: border-box;background-color: #444;color: #fff;}");
+                    client.println("input[type='range'] {-webkit-appearance: none;margin: 6px 0;}input[type='range']::-webkit-slider-thumb {-webkit-appearance: none;width: 20px;height: 20px;background: #ff6f61;border-radius: 50%;cursor: pointer;}");
+                    client.println("input[type='range']::-webkit-slider-thumb:hover {background: #e2584d;}button {background-color: #ff6f61;color: white;cursor: pointer;font-weight: bold;transition: background-color 0.3s ease;}");
+                    client.println("button:hover {background-color: #e2584d;}footer {margin-top: 15px;font-size: 12px;color: #fff;}");
+                    client.println("footer a {color: #ffa05c;text-decoration: none;}hr {border: none;height: 2px;background-color: #fff;margin: 20px 0;width: calc(100% - 20px);}");
+                    client.println("</style></head><body><h1>Lamp Control</h1><p><form><button type=\"submit\" name=\"P\">");
+                    client.println("Power</button></form></p><form><p><label for=\"mode\">Select Mode</label>");
+                    client.println("<select id=\"mode\" name=\"M\">");
                     switch (WebVisu::mode)
                     {
                     case 1:
@@ -153,28 +156,28 @@ bool WebVisu::handleClientRequest()
                     switch (WebVisu::colorHex)
                     {
                     case 0x0 ... 0xF:
-                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" style=\"width: 100%;\" name=\"C\" value=\"#00000");
+                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#00000");
                     	break;
                     case 0x1F ... 0xFF:
-                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" style=\"width: 100%;\" name=\"C\" value=\"#0000");
+                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#0000");
                     	break;
                     case 0x1FF ... 0xFFF:
-                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" style=\"width: 100%;\" name=\"C\" value=\"#000");
+                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#000");
                     	break;
                     case 0x1FFF ... 0xFFFF:
-                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" style=\"width: 100%;\" name=\"C\" value=\"#00");
+                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#00");
                     	break;
                     case 0x1FFFF ... 0xFFFFF:
-                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" style=\"width: 100%;\" name=\"C\" value=\"#0");
+                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#0");
                     	break;
                     case 0x1FFFFF ... 0xFFFFFF:
-                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" style=\"width: 100%;\" name=\"C\" value=\"#");
+                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#");
                     	break;
                     }
                     client.print(WebVisu::colorHex, HEX);
                     client.println("\" />");
                     client.println("<button type=\"submit\">Apply</button></form></body><hr><footer>Created by D_Herbert. Visit <a href=\"https://www.thingiverse.com/thing:4759920\">");
-                    client.println("Thingiverse</a> for more information.</footer></html>");
+                    client.println("Thingiverse</a> for moreinformation.</footer></html>");
                     // ---AUTO GENERATED CODE - END ---
                     break;
                 }
