@@ -31,7 +31,8 @@ class WebVisu
     public:
     WebVisu();
     void init();
-    bool connectToWiFi(const char ssid[80],const  char password[80], IPAddress ip, uint32_t timeoutMs);
+    bool connectToWiFi(const char ssid[80],const  char password[80], IPAddress ip);
+    bool isConnected();
     bool handleClientRequest();
     bool getPowerState();
     lampSettings getLampSettings();
