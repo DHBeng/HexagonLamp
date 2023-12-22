@@ -1,6 +1,6 @@
 /* NeoPixel */
 #include "Adafruit_NeoPixel.h"
-#include "WebVisu.h"
+#include "WebVisu.hpp"
 #include "config.h"
 #include "ArduinoBLE.h"
 
@@ -27,6 +27,7 @@ const uint8_t MONOCHROME_FADE = 2;
 const uint8_t SINGLE_COLOR = 3;
 const uint8_t WARM_WHITE = 4;
 const uint8_t RANDOM_COLOR = 5;
+const uint8_t SPRACLE_STARS = 6;
 // define array of LED descript by there position
 const ledPosition LAMP_DEF[NUMPIXELS] PROGMEM = {
     {0, 140, 311},
@@ -145,34 +146,37 @@ void setup()
   // init pixels
   pixels.begin();
   pixels.clear();
+  pixels.setPixelColor(1, 0, 0, 255);
+  pixels.show();
+
   // Get maximum x coordinate
   for (i = 0; i < NUMPIXELS; i++)
   {
     led = GetLedPosition(i);
     xMax = max(xMax, led.posX);
   }
-  // connect to wifi
-  i = 0;
-  pixels.setPixelColor(i, 0, 0, 255);
-  i++;
-  pixels.show();
-  do
-  {
-    // call conection methode
-    wifiConnected = userInterface.connectToWiFi(SECRET_SSID, SECRET_PASS, IP, 1000000);
-    // One LED is blue will connecting
-    pixels.setPixelColor(i, 0, 0, 255);
 
-    i++;
+  // connect to wifi
+  wifiConnected = userInterface.connectToWiFi(SECRET_SSID, SECRET_PASS, IP);
+
+  pixels.clear();
+  if (wifiConnected) // connection successful
+  {
+    pixels.setPixelColor(1, 0, 255, 0);
     pixels.show();
-  } while (wifiConnected == false);
-  // connection successful
-  pixels.clear();
-  pixels.setPixelColor(0, 0, 255, 0);
-  pixels.show();
-  delay(1000);
-  pixels.clear();
-  pixels.show();
+    delay(1000);
+    pixels.clear();
+    pixels.show();
+  }
+  else // connection failed
+  {
+    pixels.setPixelColor(1, 255, 0, 0);
+    pixels.show();
+    while (true)
+    {
+      // Do nothing
+    }
+  }
 
   userInterface.init();
   startTime = millis();
@@ -180,6 +184,12 @@ void setup()
 
 void loop()
 {
+  // check if still connected
+  if (userInterface.isConnected() == false)
+  {
+    bool wifiConnected = false;
+    wifiConnected = userInterface.connectToWiFi(SECRET_SSID, SECRET_PASS, IP);
+  }
   // check for user input
   userInterface.handleClientRequest();
   powered = userInterface.getPowerState();
@@ -248,6 +258,12 @@ void loop()
       if (callAnimation)
       {
         RandomColor();
+      }
+      break;
+    case SPRACLE_STARS:
+      if (callAnimation)
+      {
+        SparkleStars(modeChanged);
       }
       break;
     }
@@ -425,6 +441,64 @@ void RandomColor()
     }
     delay(100);
     fadeStep++;
+  }
+}
+
+void SparkleStars(bool firstCall)
+{
+  uint8_t sparkle;
+  uint8_t star;
+  uint8_t brightness;
+  rgbColor color;
+  rgbColor colorNew;
+  uint8_t brightnessPixel;
+  int8_t i;
+  const int8_t MIN_BRIGHTHNESS = 25;
+
+  if (firstCall)
+  {
+    // clear all pixels on first call of function
+    pixels.clear();
+  }
+  else
+  {
+    // Dim all pixels
+    for (i = 0; i < NUMPIXELS; i++)
+    {
+      color = getRgbColor(pixels.getPixelColor(i));
+      if (color.red > MIN_BRIGHTHNESS)
+      {
+        colorNew.red = color.red - 1;
+      }
+      else
+      {
+        colorNew.red = MIN_BRIGHTHNESS;
+      }
+      if (color.green > MIN_BRIGHTHNESS)
+      {
+        colorNew.green = color.green - 1;
+      }
+      else
+      {
+        colorNew.green = MIN_BRIGHTHNESS;
+      }
+      if (color.blue > MIN_BRIGHTHNESS)
+      {
+        colorNew.blue = color.blue - 1;
+      }
+      else
+      {
+        colorNew.blue = MIN_BRIGHTHNESS;
+      }
+      pixels.setPixelColor(i, colorNew.red, colorNew.green, colorNew.blue);
+    }
+    sparkle = random(0, 25);
+    if (sparkle == 0)
+    {
+      star = random(0, NUMPIXELS);
+      brightness = random(200, 255);
+      pixels.setPixelColor(star, 255, 255, 255);
+    }
   }
 }
 

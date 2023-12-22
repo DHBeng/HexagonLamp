@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "WebVisu.h"
+#include "WebVisu.hpp"
 
 WebVisu::WebVisu(){};
 
@@ -15,26 +15,18 @@ void WebVisu::init()
     WebVisu::colorHex = 0xFFFFFF;
 }
 
-bool WebVisu::connectToWiFi(const char ssid[80], const char password[80], IPAddress ip, uint32_t timeoutMs)
+bool WebVisu::connectToWiFi(const char ssid[80], const char password[80], IPAddress ip)
 {
     /*
-    This function is conneting the Arduino to the WiFi provoded by the inputs.
+    This function is conneting the Arduino to the WiFi provided by the inputs.
     The function returns true if the connection was successful.
     If an ip address is set the arduino is connected with an static ip.
     If the ip is 0.0.0.0 the router will assign an ip address.
     */
 
     int16_t status = WL_IDLE_STATUS;
-    int16_t startTime;
-    int16_t currentTime;
 
-    startTime = millis();
     WiFi.setHostname("Lamp");
-
-    if (timeoutMs < 5000)
-    {
-        timeoutMs = 5000;
-    }
 
     if (ip != IPAddress(0, 0, 0, 0))
     {
@@ -48,17 +40,24 @@ bool WebVisu::connectToWiFi(const char ssid[80], const char password[80], IPAddr
 
     while (status != WL_CONNECTED)
     {
-        currentTime = millis();
-        if (currentTime - startTime > timeoutMs)
-        {
-            return false;
-        }
         status = WiFi.begin(ssid, password);
         delay(10000);
     }
 
     WebVisu::server.begin();
     return true;
+}
+
+bool WebVisu::isConnected()
+{
+    if (WiFi.status() == WL_CONNECTED)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 bool WebVisu::handleClientRequest()
@@ -112,40 +111,53 @@ bool WebVisu::handleClientRequest()
                     switch (WebVisu::mode)
                     {
                     case 1:
-                    	client.println("<option selected value=\"1\">Rainbow Fade</option>");
-                    	client.println("<option value=\"2\">Monochrome Fade</option>");
-                    	client.println("<option value=\"3\">Single Color</option>");
-                    	client.println("<option value=\"4\">Warm White</option>");
-                    	client.println("<option value=\"5\">Random Color Fade</option></select>");
-                    	break;
+                        client.println("<option selected value=\"1\">Rainbow Fade</option>");
+                        client.println("<option value=\"2\">Monochrome Fade</option>");
+                        client.println("<option value=\"3\">Single Color</option>");
+                        client.println("<option value=\"4\">Warm White</option>");
+                        client.println("<option value=\"5\">Random Color Fade</option>");
+                        client.println("<option value=\"6\">Sparkle Stars</option></select>");
+                        break;
                     case 2:
-                    	client.println("<option value=\"1\">Rainbow Fade</option>");
-                    	client.println("<option selected value=\"2\">Monochrome Fade</option>");
-                    	client.println("<option value=\"3\">Single Color</option>");
-                    	client.println("<option value=\"4\">Warm White</option>");
-                    	client.println("<option value=\"5\">Random Color Fade</option></select>");
-                    	break;
+                        client.println("<option value=\"1\">Rainbow Fade</option>");
+                        client.println("<option selected value=\"2\">Monochrome Fade</option>");
+                        client.println("<option value=\"3\">Single Color</option>");
+                        client.println("<option value=\"4\">Warm White</option>");
+                        client.println("<option value=\"5\">Random Color Fade</option>");
+                        client.println("<option value=\"6\">Sparkle Stars</option></select>");
+                        break;
                     case 3:
-                    	client.println("<option value=\"1\">Rainbow Fade</option>");
-                    	client.println("<option value=\"2\">Monochrome Fade</option>");
-                    	client.println("<option selected value=\"3\">Single Color</option>");
-                    	client.println("<option value=\"4\">Warm White</option>");
-                    	client.println("<option value=\"5\">Random Color Fade</option></select>");
-                    	break;
+                        client.println("<option value=\"1\">Rainbow Fade</option>");
+                        client.println("<option value=\"2\">Monochrome Fade</option>");
+                        client.println("<option selected value=\"3\">Single Color</option>");
+                        client.println("<option value=\"4\">Warm White</option>");
+                        client.println("<option value=\"5\">Random Color Fade</option>");
+                        client.println("<option value=\"6\">Sparkle Stars</option></select>");
+                        break;
                     case 4:
-                    	client.println("<option value=\"1\">Rainbow Fade</option>");
-                    	client.println("<option value=\"2\">Monochrome Fade</option>");
-                    	client.println("<option value=\"3\">Single Color</option>");
-                    	client.println("<option selected value=\"4\">Warm White</option>");
-                    	client.println("<option value=\"5\">Random Color Fade</option></select>");
-                    	break;
+                        client.println("<option value=\"1\">Rainbow Fade</option>");
+                        client.println("<option value=\"2\">Monochrome Fade</option>");
+                        client.println("<option value=\"3\">Single Color</option>");
+                        client.println("<option selected value=\"4\">Warm White</option>");
+                        client.println("<option value=\"5\">Random Color Fade</option>");
+                        client.println("<option value=\"6\">Sparkle Stars</option></select>");
+                        break;
                     case 5:
-                    	client.println("<option value=\"1\">Rainbow Fade</option>");
-                    	client.println("<option value=\"2\">Monochrome Fade</option>");
-                    	client.println("<option value=\"3\">Single Color</option>");
-                    	client.println("<option value=\"4\">Warm White</option>");
-                    	client.println("<option selected value=\"5\">Random Color Fade</option></select>");
-                    	break;
+                        client.println("<option value=\"1\">Rainbow Fade</option>");
+                        client.println("<option value=\"2\">Monochrome Fade</option>");
+                        client.println("<option value=\"3\">Single Color</option>");
+                        client.println("<option value=\"4\">Warm White</option>");
+                        client.println("<option selected value=\"5\">Random Color Fade</option>");
+                        client.println("<option value=\"6\">Sparkle Stars</option></select>");
+                        break;
+                    case 6:
+                        client.println("<option value=\"1\">Rainbow Fade</option>");
+                        client.println("<option value=\"2\">Monochrome Fade</option>");
+                        client.println("<option value=\"3\">Single Color</option>");
+                        client.println("<option value=\"4\">Warm White</option>");
+                        client.println("<option value=\"5\">Random Color Fade</option>");
+                        client.println("<option selected value=\"6\">Sparkle Stars</option></select>");
+                        break;
                     }
                     client.print("</p><h2>Settings</h2><label for=\"brightness\">Brightness</label><input type=\"range\" id=\"brightness\" name=\"B\" min=\"0\" max=\"255\" value=\"");
                     client.print(WebVisu::brightness);
@@ -156,23 +168,23 @@ bool WebVisu::handleClientRequest()
                     switch (WebVisu::colorHex)
                     {
                     case 0x0 ... 0xF:
-                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#00000");
-                    	break;
+                        client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#00000");
+                        break;
                     case 0x1F ... 0xFF:
-                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#0000");
-                    	break;
+                        client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#0000");
+                        break;
                     case 0x1FF ... 0xFFF:
-                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#000");
-                    	break;
+                        client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#000");
+                        break;
                     case 0x1FFF ... 0xFFFF:
-                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#00");
-                    	break;
+                        client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#00");
+                        break;
                     case 0x1FFFF ... 0xFFFFF:
-                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#0");
-                    	break;
+                        client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#0");
+                        break;
                     case 0x1FFFFF ... 0xFFFFFF:
-                    	client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#");
-                    	break;
+                        client.print("<label for=\"color\">Color</label><input type=\"color\" id=\"color\" name=\"C\" value=\"#");
+                        break;
                     }
                     client.print(WebVisu::colorHex, HEX);
                     client.println("\" />");
@@ -259,7 +271,7 @@ void WebVisu::extractSettings(char data[80])
     uint8_t j;
     uint8_t k;
     uint8_t separatorPos[3];
-    #define VAL_LENGHT 6
+#define VAL_LENGHT 6
     char value[VAL_LENGHT];
 
     // Get the index of the separation charactar ('&')
@@ -288,7 +300,7 @@ void WebVisu::extractSettings(char data[80])
     WebVisu::mode = atoi(value);
 
     // Get value for brightness
-    j = 0;    
+    j = 0;
     memset(value, 0, VAL_LENGHT);
     for (i = separatorPos[0] + 3; i <= separatorPos[1] - 1; i++)
     {
@@ -309,7 +321,7 @@ void WebVisu::extractSettings(char data[80])
     WebVisu::speed = atoi(value);
 
     // Get value for color
-    j = 0;    
+    j = 0;
     memset(value, 0, VAL_LENGHT);
     for (i = separatorPos[2] + 6; i <= separatorPos[2] + 12; i++)
     {
