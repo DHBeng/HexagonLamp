@@ -27,7 +27,6 @@ const uint8_t MONOCHROME_FADE = 2;
 const uint8_t SINGLE_COLOR = 3;
 const uint8_t WARM_WHITE = 4;
 const uint8_t RANDOM_COLOR = 5;
-const uint8_t SPRACLE_STARS = 6;
 // define array of LED descript by there position
 const ledPosition LAMP_DEF[NUMPIXELS] PROGMEM = {
     {0, 140, 311},
@@ -260,12 +259,6 @@ void loop()
         RandomColor();
       }
       break;
-    case SPRACLE_STARS:
-      if (callAnimation)
-      {
-        SparkleStars(modeChanged);
-      }
-      break;
     }
   }
   else
@@ -441,64 +434,6 @@ void RandomColor()
     }
     delay(100);
     fadeStep++;
-  }
-}
-
-void SparkleStars(bool firstCall)
-{
-  uint8_t sparkle;
-  uint8_t star;
-  uint8_t brightness;
-  rgbColor color;
-  rgbColor colorNew;
-  uint8_t brightnessPixel;
-  int8_t i;
-  const int8_t MIN_BRIGHTHNESS = 25;
-
-  if (firstCall)
-  {
-    // clear all pixels on first call of function
-    pixels.clear();
-  }
-  else
-  {
-    // Dim all pixels
-    for (i = 0; i < NUMPIXELS; i++)
-    {
-      color = getRgbColor(pixels.getPixelColor(i));
-      if (color.red > MIN_BRIGHTHNESS)
-      {
-        colorNew.red = color.red - 1;
-      }
-      else
-      {
-        colorNew.red = MIN_BRIGHTHNESS;
-      }
-      if (color.green > MIN_BRIGHTHNESS)
-      {
-        colorNew.green = color.green - 1;
-      }
-      else
-      {
-        colorNew.green = MIN_BRIGHTHNESS;
-      }
-      if (color.blue > MIN_BRIGHTHNESS)
-      {
-        colorNew.blue = color.blue - 1;
-      }
-      else
-      {
-        colorNew.blue = MIN_BRIGHTHNESS;
-      }
-      pixels.setPixelColor(i, colorNew.red, colorNew.green, colorNew.blue);
-    }
-    sparkle = random(0, 25);
-    if (sparkle == 0)
-    {
-      star = random(0, NUMPIXELS);
-      brightness = random(200, 255);
-      pixels.setPixelColor(star, 255, 255, 255);
-    }
   }
 }
 
