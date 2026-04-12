@@ -122,7 +122,8 @@ bool WebVisu::handleClientRequest()
                         client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
                         client.println("<option value=\"10\">Random Color Fade</option>");
                         client.println("<option value=\"11\">Single Color</option>");
-                        client.println("<option value=\"12\">Warm White</option></select>");
+                        client.println("<option value=\"12\">Warm White</option>");
+                        client.println("<option value=\"13\">Snake</option></select>");
                         break;
                     case 2:
                         client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -136,7 +137,8 @@ bool WebVisu::handleClientRequest()
                         client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
                         client.println("<option value=\"10\">Random Color Fade</option>");
                         client.println("<option value=\"11\">Single Color</option>");
-                        client.println("<option value=\"12\">Warm White</option></select>");
+                        client.println("<option value=\"12\">Warm White</option>");
+                        client.println("<option value=\"13\">Snake</option></select>");
                         break;
                     case 3:
                         client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -150,7 +152,8 @@ bool WebVisu::handleClientRequest()
                         client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
                         client.println("<option value=\"10\">Random Color Fade</option>");
                         client.println("<option value=\"11\">Single Color</option>");
-                        client.println("<option value=\"12\">Warm White</option></select>");
+                        client.println("<option value=\"12\">Warm White</option>");
+                        client.println("<option value=\"13\">Snake</option></select>");
                         break;
                     case 4:
                         client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -164,7 +167,8 @@ bool WebVisu::handleClientRequest()
                         client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
                         client.println("<option value=\"10\">Random Color Fade</option>");
                         client.println("<option value=\"11\">Single Color</option>");
-                        client.println("<option value=\"12\">Warm White</option></select>");
+                        client.println("<option value=\"12\">Warm White</option>");
+                        client.println("<option value=\"13\">Snake</option></select>");
                         break;
                     case 5:
                         client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -178,7 +182,8 @@ bool WebVisu::handleClientRequest()
                         client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
                         client.println("<option value=\"10\">Random Color Fade</option>");
                         client.println("<option value=\"11\">Single Color</option>");
-                        client.println("<option value=\"12\">Warm White</option></select>");
+                        client.println("<option value=\"12\">Warm White</option>");
+                        client.println("<option value=\"13\">Snake</option></select>");
                         break;
                     case 6:
                         client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -192,7 +197,8 @@ bool WebVisu::handleClientRequest()
                         client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
                         client.println("<option value=\"10\">Random Color Fade</option>");
                         client.println("<option value=\"11\">Single Color</option>");
-                        client.println("<option value=\"12\">Warm White</option></select>");
+                        client.println("<option value=\"12\">Warm White</option>");
+                        client.println("<option value=\"13\">Snake</option></select>");
                         break;
                     case 7:
                         client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -206,7 +212,8 @@ bool WebVisu::handleClientRequest()
                         client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
                         client.println("<option value=\"10\">Random Color Fade</option>");
                         client.println("<option value=\"11\">Single Color</option>");
-                        client.println("<option value=\"12\">Warm White</option></select>");
+                        client.println("<option value=\"12\">Warm White</option>");
+                        client.println("<option value=\"13\">Snake</option></select>");
                         break;
                     case 8:
                         client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -220,7 +227,8 @@ bool WebVisu::handleClientRequest()
                         client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
                         client.println("<option value=\"10\">Random Color Fade</option>");
                         client.println("<option value=\"11\">Single Color</option>");
-                        client.println("<option value=\"12\">Warm White</option></select>");
+                        client.println("<option value=\"12\">Warm White</option>");
+                        client.println("<option value=\"13\">Snake</option></select>");
                         break;
                     case 9:
                         client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -234,7 +242,8 @@ bool WebVisu::handleClientRequest()
                         client.println("<option selected value=\"9\">Monochrome Fade Cold Color</option>");
                         client.println("<option value=\"10\">Random Color Fade</option>");
                         client.println("<option value=\"11\">Single Color</option>");
-                        client.println("<option value=\"12\">Warm White</option></select>");
+                        client.println("<option value=\"12\">Warm White</option>");
+                        client.println("<option value=\"13\">Snake</option></select>");
                         break;
                     case 10:
                         client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -248,7 +257,8 @@ bool WebVisu::handleClientRequest()
                         client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
                         client.println("<option selected value=\"10\">Random Color Fade</option>");
                         client.println("<option value=\"11\">Single Color</option>");
-                        client.println("<option value=\"12\">Warm White</option></select>");
+                        client.println("<option value=\"12\">Warm White</option>");
+                        client.println("<option value=\"13\">Snake</option></select>");
                         break;
                     case 11:
                         client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -262,7 +272,8 @@ bool WebVisu::handleClientRequest()
                         client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
                         client.println("<option value=\"10\">Random Color Fade</option>");
                         client.println("<option selected value=\"11\">Single Color</option>");
-                        client.println("<option value=\"12\">Warm White</option></select>");
+                        client.println("<option value=\"12\">Warm White</option>");
+                        client.println("<option value=\"13\">Snake</option></select>");
                         break;
                     case 12:
                         client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -276,7 +287,23 @@ bool WebVisu::handleClientRequest()
                         client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
                         client.println("<option value=\"10\">Random Color Fade</option>");
                         client.println("<option value=\"11\">Single Color</option>");
-                        client.println("<option selected value=\"12\">Warm White</option></select>");
+                        client.println("<option selected value=\"12\">Warm White</option>");
+                        client.println("<option value=\"13\">Snake</option></select>");
+                        break;
+                    case 13:
+                        client.println("<option value=\"1\">Rainbow Fade</option>");
+                        client.println("<option value=\"2\">Warm Color Fade</option>");
+                        client.println("<option value=\"3\">Cold Color Fade</option>");
+                        client.println("<option value=\"4\">Radial Rainbow Fade</option>");
+                        client.println("<option value=\"5\">Radial Warm Color Fade</option>");
+                        client.println("<option value=\"6\">Radial Cold Color Fade</option>");
+                        client.println("<option value=\"7\">Monochrome Fade Rainbow</option>");
+                        client.println("<option value=\"8\">Monochrome Fade Warm Color</option>");
+                        client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
+                        client.println("<option value=\"10\">Random Color Fade</option>");
+                        client.println("<option value=\"11\">Single Color</option>");
+                        client.println("<option value=\"12\">Warm White</option>");
+                        client.println("<option selected value=\"13\">Snake</option></select>");
                         break;
                     }
                     client.print("</p><h2>Settings</h2><label for=\"brightness\">Brightness</label><input type=\"range\" id=\"brightness\" name=\"B\" min=\"0\" max=\"255\" value=\"");
@@ -431,7 +458,7 @@ void WebVisu::extractSettings(char data[80])
     }
     WebVisu::brightness = atoi(value);
 
-    // Get value for brightness
+    // Get value for speed
     j = 0;
     k = 0;
     memset(value, 0, VAL_LENGHT);
@@ -468,4 +495,24 @@ void WebVisu::extractSettings(char data[80])
     value[1] = data[i];
     i++;
     WebVisu::color.blue = strtol(value, NULL, 16);
+
+    // if mode == 13 (Snake) initialize the snake with settings for the first segment
+    if (WebVisu::mode == (uint8_t)13)
+    {
+        snakeSegment segment;
+        segment.positionIndex.push_back(0);
+        segment.color = WebVisu::color;
+        segment.fadeStep = 25;
+        segment.maxLength = 5;
+        snake.insert(snake.begin(), segment);
+        if (snake.size() > 10)
+        {
+            snake.resize(10);
+        }
+    }
+    else
+    {
+        // if mode is not snake reset the snake variable
+        snake.clear();
+    }
 }

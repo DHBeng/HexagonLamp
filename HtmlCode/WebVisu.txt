@@ -24,7 +24,8 @@ case 1:
     client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
     client.println("<option value=\"10\">Random Color Fade</option>");
     client.println("<option value=\"11\">Single Color</option>");
-    client.println("<option value=\"12\">Warm White</option></select>");
+    client.println("<option value=\"12\">Warm White</option>");
+    client.println("<option value=\"13\">Snake</option></select>");
     break;
 case 2:
     client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -38,7 +39,8 @@ case 2:
     client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
     client.println("<option value=\"10\">Random Color Fade</option>");
     client.println("<option value=\"11\">Single Color</option>");
-    client.println("<option value=\"12\">Warm White</option></select>");
+    client.println("<option value=\"12\">Warm White</option>");
+    client.println("<option value=\"13\">Snake</option></select>");
     break;
 case 3:
     client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -52,7 +54,8 @@ case 3:
     client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
     client.println("<option value=\"10\">Random Color Fade</option>");
     client.println("<option value=\"11\">Single Color</option>");
-    client.println("<option value=\"12\">Warm White</option></select>");
+    client.println("<option value=\"12\">Warm White</option>");
+    client.println("<option value=\"13\">Snake</option></select>");
     break;
 case 4:
     client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -66,7 +69,8 @@ case 4:
     client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
     client.println("<option value=\"10\">Random Color Fade</option>");
     client.println("<option value=\"11\">Single Color</option>");
-    client.println("<option value=\"12\">Warm White</option></select>");
+    client.println("<option value=\"12\">Warm White</option>");
+    client.println("<option value=\"13\">Snake</option></select>");
     break;
 case 5:
     client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -80,7 +84,8 @@ case 5:
     client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
     client.println("<option value=\"10\">Random Color Fade</option>");
     client.println("<option value=\"11\">Single Color</option>");
-    client.println("<option value=\"12\">Warm White</option></select>");
+    client.println("<option value=\"12\">Warm White</option>");
+    client.println("<option value=\"13\">Snake</option></select>");
     break;
 case 6:
     client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -94,7 +99,8 @@ case 6:
     client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
     client.println("<option value=\"10\">Random Color Fade</option>");
     client.println("<option value=\"11\">Single Color</option>");
-    client.println("<option value=\"12\">Warm White</option></select>");
+    client.println("<option value=\"12\">Warm White</option>");
+    client.println("<option value=\"13\">Snake</option></select>");
     break;
 case 7:
     client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -108,7 +114,8 @@ case 7:
     client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
     client.println("<option value=\"10\">Random Color Fade</option>");
     client.println("<option value=\"11\">Single Color</option>");
-    client.println("<option value=\"12\">Warm White</option></select>");
+    client.println("<option value=\"12\">Warm White</option>");
+    client.println("<option value=\"13\">Snake</option></select>");
     break;
 case 8:
     client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -122,7 +129,8 @@ case 8:
     client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
     client.println("<option value=\"10\">Random Color Fade</option>");
     client.println("<option value=\"11\">Single Color</option>");
-    client.println("<option value=\"12\">Warm White</option></select>");
+    client.println("<option value=\"12\">Warm White</option>");
+    client.println("<option value=\"13\">Snake</option></select>");
     break;
 case 9:
     client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -136,7 +144,8 @@ case 9:
     client.println("<option selected value=\"9\">Monochrome Fade Cold Color</option>");
     client.println("<option value=\"10\">Random Color Fade</option>");
     client.println("<option value=\"11\">Single Color</option>");
-    client.println("<option value=\"12\">Warm White</option></select>");
+    client.println("<option value=\"12\">Warm White</option>");
+    client.println("<option value=\"13\">Snake</option></select>");
     break;
 case 10:
     client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -150,7 +159,8 @@ case 10:
     client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
     client.println("<option selected value=\"10\">Random Color Fade</option>");
     client.println("<option value=\"11\">Single Color</option>");
-    client.println("<option value=\"12\">Warm White</option></select>");
+    client.println("<option value=\"12\">Warm White</option>");
+    client.println("<option value=\"13\">Snake</option></select>");
     break;
 case 11:
     client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -164,7 +174,8 @@ case 11:
     client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
     client.println("<option value=\"10\">Random Color Fade</option>");
     client.println("<option selected value=\"11\">Single Color</option>");
-    client.println("<option value=\"12\">Warm White</option></select>");
+    client.println("<option value=\"12\">Warm White</option>");
+    client.println("<option value=\"13\">Snake</option></select>");
     break;
 case 12:
     client.println("<option value=\"1\">Rainbow Fade</option>");
@@ -178,7 +189,23 @@ case 12:
     client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
     client.println("<option value=\"10\">Random Color Fade</option>");
     client.println("<option value=\"11\">Single Color</option>");
-    client.println("<option selected value=\"12\">Warm White</option></select>");
+    client.println("<option selected value=\"12\">Warm White</option>");
+    client.println("<option value=\"13\">Snake</option></select>");
+    break;
+case 13:
+    client.println("<option value=\"1\">Rainbow Fade</option>");
+    client.println("<option value=\"2\">Warm Color Fade</option>");
+    client.println("<option value=\"3\">Cold Color Fade</option>");
+    client.println("<option value=\"4\">Radial Rainbow Fade</option>");
+    client.println("<option value=\"5\">Radial Warm Color Fade</option>");
+    client.println("<option value=\"6\">Radial Cold Color Fade</option>");
+    client.println("<option value=\"7\">Monochrome Fade Rainbow</option>");
+    client.println("<option value=\"8\">Monochrome Fade Warm Color</option>");
+    client.println("<option value=\"9\">Monochrome Fade Cold Color</option>");
+    client.println("<option value=\"10\">Random Color Fade</option>");
+    client.println("<option value=\"11\">Single Color</option>");
+    client.println("<option value=\"12\">Warm White</option>");
+    client.println("<option selected value=\"13\">Snake</option></select>");
     break;
 }
 client.print("</p><h2>Settings</h2><label for=\"brightness\">Brightness</label><input type=\"range\" id=\"brightness\" name=\"B\" min=\"0\" max=\"255\" value=\"");

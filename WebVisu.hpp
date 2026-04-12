@@ -10,6 +10,7 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <WiFiNINA.h>
+#include <vector>
 
 struct rgbColor
 {
@@ -26,6 +27,17 @@ struct lampSettings
     rgbColor color;
 };
 
+// variable for snake mode
+struct snakeSegment
+{
+    std::vector<uint16_t> positionIndex;
+    rgbColor color;
+    uint8_t fadeStep;
+    uint8_t maxLength;
+};
+
+extern std::vector<snakeSegment> snake;
+
 class WebVisu
 {
 public:
@@ -40,7 +52,6 @@ public:
 private:
     void extractSettings(char data[80]);
     WiFiServer server = WiFiServer(80);
-    static char lastClientRequest[80];
     bool powerState;
     uint8_t mode;
     uint8_t brightness;
